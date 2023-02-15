@@ -12,10 +12,10 @@ namespace Telhai.CS.FinalProject
         public string id { get; set; }
         public DateTime date { get; set; }
         public string TeacherName { get; set; }
-        public DateTime BTime { get; set; }
+        public DateTime BeginTime { get; set; }
         public float duration { get; set; }
         public bool isRandom { get; set; }
-        public List<Question> questions { get; set; };
+        public List<Question> questions { get; set; }
 
         public exam(string exName)
         {

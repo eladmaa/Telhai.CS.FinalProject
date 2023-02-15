@@ -8,9 +8,17 @@ namespace Telhai.CS.FinalProject
 {
     public class Question
     {
-        public string content;
-        public int correct;
+        public string content { get; set; }
+        public int correct { get; set; }
         List<string> answers;
+        public Question()
+        {
+            answers = new List<string>();
+        }
+        public void add(string answer)
+        {
+            answers.Add(answer);
+        }
 
     }
 }

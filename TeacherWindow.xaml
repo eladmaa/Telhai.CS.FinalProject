@@ -4,13 +4,61 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Telhai.CS.FinalProject"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded_1"
         Title="TeacherWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Name="examsList" Grid.Column="1"/>
+        <Grid Name="examsGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Name="btn_AddExam" Content="New Exam" Click="btn_AddExam_Click"></Button>
+            <ListBox Grid.Row="1" Name="examsList" Grid.Column="1"/>
+        </Grid>
+        <Grid Name="Exam" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid Name="MetaData" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label FontSize="16" Grid.Row="0" Grid.Column="0" Name="lbl_ExamName" Content="Exam Name"/>
+                <TextBox Background="AliceBlue" Name="txtExame" Grid.Row="0" Grid.Column="1"/>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Label FontSize="16"  Name="lblId" Content="Exam ID" Width="120"/>
+                    <TextBox Background="AliceBlue" Name="txtID"  Width="160"/>
+                    
+                    <Label FontSize="16" Name="lblDate" Content="Exame Date"/>
+                    <DatePicker Background="AliceBlue" Name="exame_Datepicker"   Width="224"/>
+                </StackPanel>
+
+                <Label Name="lbl_TeacherName" Grid.Row="2" Grid.Column="0" Content="Teacher Name" FontSize="16"/>
+                <TextBox Background="AliceBlue" Name="txtTeacher" Grid.Row="2" Grid.Column="1"/>
+
+                <StackPanel Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <Label FontSize="16"  Name="lblBegin_time" Content="Begin time" Width="120"/>
+                    <TextBox Background="AliceBlue" Name="time_begining" Width="160"/>
+
+                    <Label FontSize="16" Name="Duration" Content="duration"/>
+                    <ComboBox Background="AliceBlue" Name="time_duration"   Width="224"/>
+                    
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+        
     </Grid>
 </Window>
