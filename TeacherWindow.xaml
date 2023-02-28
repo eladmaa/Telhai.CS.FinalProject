@@ -21,7 +21,7 @@
         </Grid>
         <Grid Name="Exam" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
             <Grid Name="MetaData" Grid.Row="0">
@@ -40,7 +40,7 @@
                 <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
                     <Label FontSize="16"  Name="lblId" Content="Exam ID" Width="120"/>
                     <TextBox Background="AliceBlue" Name="txtID"  Width="160"/>
-                    
+
                     <Label FontSize="16" Name="lblDate" Content="Exame Date"/>
                     <DatePicker Background="AliceBlue" Name="exame_Datepicker"   Width="224"/>
                 </StackPanel>
@@ -53,12 +53,49 @@
                     <TextBox Background="AliceBlue" Name="time_begining" Width="160"/>
 
                     <Label FontSize="16" Name="Duration" Content="duration"/>
-                    <ComboBox Background="AliceBlue" Name="time_duration"   Width="224"/>
-                    
+                    <ComboBox Background="AliceBlue" Name="time_duration"   Width="auto"/>
+                    <Label FontSize="16" Name="lbl_random" Content="random apearance?"/>
+                    <CheckBox x:Name="checkBox" Content="CheckBox"/>
+
                 </StackPanel>
 
             </Grid>
+            <Grid x:Name="examArea" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="questions" Width="1*"/>
+                    <ColumnDefinition x:Name="answersCols" Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Name="QuestionsGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Name="btn_AddQuestion" Content="Add Question" Click="btn_AddExam_Click"></Button>
+                    <ListBox Grid.Row="1" Name="QuestionsList" Grid.Column="1"/>
+                </Grid>
+                <Grid x:Name="SingleQuestion" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Name="header" Height ="auto"/>
+                        <RowDefinition Name="QuestionText" Height ="auto"/>
+                        <RowDefinition Name="images" Height="10*"/>
+                        <RowDefinition Name="AnswersList" Height="79*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Name="question_desc" Content="Question area" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="textBlock" TextWrapping="Wrap" Text="write your question here"/>
+                <DockPanel HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="1">
+                    <Button Name="btnLoadPhoto" Width="auto" Height="30" Content="upload image"></Button>
+                    <Button Name="btnUpload" Content="upload" Width="80" DockPanel.Dock="Right"/>
+                    <TextBox Name="Path" HorizontalAlignment="Stretch"/>
+                </DockPanel>
+                <ListBox Name="AnswersListBox" Grid.Column="1" Grid.Row="3" VerticalAlignment="Stretch"/>
+                    
+                </Grid>
+                    
+                
+
+            </Grid>
         </Grid>
-        
+
     </Grid>
 </Window>

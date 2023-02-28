@@ -55,11 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="exam.cs" />
+    <Compile Include="Exam.cs" />
+    <Compile Include="ExamRepository.cs" />
+    <Compile Include="ExamWindow.xaml.cs">
+      <DependentUpon>ExamWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IExamRepository.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="StudentEntrance.xaml.cs">
+      <DependentUpon>StudentEntrance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TeacherWindow.xaml.cs">
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ExamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,6 +84,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StudentEntrance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TeacherWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

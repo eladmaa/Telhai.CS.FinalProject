@@ -21,11 +21,11 @@ namespace Telhai.CS.FinalProject
     {
         private const float MAX_TEST_DURATION = 3f;
         private const float MIN_TEST_DURATION = 1f;
-        public List<exam> allExams;
+        public List<Exam> allExams;
         public TeacherWindow()
         {
             InitializeComponent();
-            allExams = new List<exam>();
+            allExams = new List<Exam>();
         }
      
         private void btn_AddExam_Click(object sender, RoutedEventArgs e)

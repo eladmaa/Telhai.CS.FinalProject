@@ -27,14 +27,15 @@ namespace Telhai.CS.FinalProject
 
         private void std_Click(object sender, RoutedEventArgs e)
         {
-
+            StudentEntrance student = new StudentEntrance();
+            student.Show();
         }
 
         private void tchr_Click(object sender, RoutedEventArgs e)
         {
             TeacherWindow Teacher= new TeacherWindow();
             Teacher.Show();
-            List<exam> exams = Teacher.allExams;
+            List<Exam> exams = Teacher.allExams;
         }
     }
 }

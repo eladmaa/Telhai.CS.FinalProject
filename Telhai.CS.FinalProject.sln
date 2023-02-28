@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telhai.CS.FinalProject", "Telhai.CS.FinalProject.csproj", "{A3DADAD5-8C34-4A5D-BAC5-3A8EADA30ACB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telhai.CS.APIServer", "..\Telhai.CS.APIServer\Telhai.CS.APIServer.csproj", "{BBFB1EE1-52D2-405C-A08B-6CC2297ACCCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A3DADAD5-8C34-4A5D-BAC5-3A8EADA30ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3DADAD5-8C34-4A5D-BAC5-3A8EADA30ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3DADAD5-8C34-4A5D-BAC5-3A8EADA30ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBFB1EE1-52D2-405C-A08B-6CC2297ACCCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBFB1EE1-52D2-405C-A08B-6CC2297ACCCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBFB1EE1-52D2-405C-A08B-6CC2297ACCCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBFB1EE1-52D2-405C-A08B-6CC2297ACCCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

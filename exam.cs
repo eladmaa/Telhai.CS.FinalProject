@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Telhai.CS.FinalProject
 {
-    public class exam
+    public class Exam
     {
         public string examName { get; set; }
         public string id { get; set; }
@@ -17,7 +17,7 @@ namespace Telhai.CS.FinalProject
         public bool isRandom { get; set; }
         public List<Question> questions { get; set; }
 
-        public exam(string exName)
+        public Exam(string exName)
         {
             this.examName = exName;
             this.id = Guid.NewGuid().ToString();
