@@ -14,7 +14,7 @@ namespace Telhai.CS.FinalProject
         {
             this._examList= new List<Exam>();
         }
-
+        /*
         public static ExamRepository Instance
         {
             get 
@@ -25,11 +25,12 @@ namespace Telhai.CS.FinalProject
             }
           
         }
+        */
         public void addExam(Exam exam)
         {
             this._examList.Add(exam);
         }
-
+        
         public Exam getExam(string examName)
         {
             foreach (var exam in _examList)
@@ -53,5 +54,7 @@ namespace Telhai.CS.FinalProject
                 this._examList[indexFound] = exam;
             }
         }
+
+        public List<Exam> getExamList() { return this._examList; }
     }
 }

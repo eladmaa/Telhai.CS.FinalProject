@@ -12,5 +12,6 @@ namespace Telhai.CS.FinalProject
         void updateExam(Exam exam);
         void removeExam(Exam exam);
         Exam getExam(String examName);
+        Exam[] Exams { get; }
     }
 }

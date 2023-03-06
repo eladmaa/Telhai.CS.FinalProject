@@ -71,7 +71,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Name="btn_AddQuestion" Content="Add Question" Click="btn_AddExam_Click"></Button>
+                    <Button Grid.Row="0" Name="btn_AddQuestion" Content="Add Question" Click="btn_AddQuestion_Click"></Button>
                     <ListBox Grid.Row="1" Name="QuestionsList" Grid.Column="1"/>
                 </Grid>
                 <Grid x:Name="SingleQuestion" Grid.Column="1">
