@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -38,7 +38,7 @@ namespace Telhai.CS.APIServer.Models
             if (response != null)
             {
                 response.EnsureSuccessStatusCode();
-                string? dataString = await response.Content.ReadAsStringAsync();
+                String? dataString = await response.Content.ReadAsStringAsync();
                 var exams = JsonSerializer.Deserialize<List<Exam>>(dataString);
                 if (exams != null)
                 {

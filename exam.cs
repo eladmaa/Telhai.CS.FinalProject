@@ -10,11 +10,17 @@ namespace Telhai.CS.FinalProject
     {
         [JsonPropertyName("examName")]
         public string examName { get; set; }
+        [JsonPropertyName("id")]
         public string id { get; set; }
+        [JsonPropertyName("date")]
         public DateTime date { get; set; }
+        [JsonPropertyName("TeacherName")]
         public string TeacherName { get; set; }
+        [JsonPropertyName("BeginTime")]
         public DateTime BeginTime { get; set; }
+        [JsonPropertyName("duration")]
         public float duration { get; set; }
+        [JsonPropertyName("israndom")]
         public bool isRandom { get; set; }
         public List<Question> questions { get; set; }
 

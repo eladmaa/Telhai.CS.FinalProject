@@ -10,6 +10,9 @@ namespace Telhai.CS.FinalProject
     {
         private List<Exam> _examList;
         static private ExamRepository _instance = null;
+
+        public Exam[] Exams => throw new NotImplementedException();
+
         private ExamRepository() 
         {
             this._examList= new List<Exam>();
