@@ -26,7 +26,7 @@ namespace Telhai.CS.FinalProject
         }
 
         private void std_Click(object sender, RoutedEventArgs e)
-        {
+        { 
 
         }
 
