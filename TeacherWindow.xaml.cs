@@ -24,20 +24,24 @@ namespace Telhai.CS.FinalProject
         private const float MAX_TEST_DURATION = 3f;
         private const float MIN_TEST_DURATION = 1f;
         static int id = 0;
+        static int Qid = 0;
         private ObservableCollection<Exam> exams = new ObservableCollection<Exam>();
-
+        private ObservableCollection<Question> questionsList = new ObservableCollection<Question>();
+        private ObservableCollection<String> answersList = new ObservableCollection<String>();
         public TeacherWindow()
         {
             InitializeComponent();
             this.Loaded += Window_Loaded_1;
             examsList.ItemsSource = exams;
+            QuestionsList.ItemsSource = questionsList;
+            AnswersListBox.ItemsSource = answersList;
         }
      
         private async void btn_AddExam_Click(object sender, RoutedEventArgs e)
         {
             id++;
             string idCounter = id.ToString();
-            Exam s = new Exam (   "Name_" + idCounter );
+            Exam s = new Exam ("Name_" + idCounter );
             await HttpExamRepository.Instance.AddExamAsync(s);
             //Reload
             List<Exam> list = await HttpExamRepository.Instance.GetAllExamsAsync();
@@ -56,11 +60,32 @@ namespace Telhai.CS.FinalProject
 
         private async void btn_AddQuestion_Click(object sender, RoutedEventArgs e)
         {
+            Qid++;    
+            Question q = new Question(Qid);
+            await HttpExamRepository.Instance.AddQuestionAsync(q);
+            
+        }
+
+        private void textQuestion_TextChanged(object sender, TextChangedEventArgs e)
+        {
             if (this.examsList.SelectedItem is Exam ex)
             {
-                Question q = new Question();
-                await HttpExamRepository.Instance.AddQuestionAsync(q);
+                // Http put update question
             }
+        }
+
+        private async void AddAnswer_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.QuestionsLB.SelectedItem is Question q)
+            {
+                q.AnswersCount++;
+                await HttpExamRepository.Instance.UpdateQuestionAnswer(); //http put update question
+            }
+        }
+
+        private void AnswersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

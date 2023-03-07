@@ -46,7 +46,7 @@
                 </StackPanel>
 
                 <Label Name="lbl_TeacherName" Grid.Row="2" Grid.Column="0" Content="Teacher Name" FontSize="16"/>
-                <TextBox Background="AliceBlue" Name="txtTeacher" Grid.Row="2" Grid.Column="1"/>
+                <TextBox Background="AliceBlue" Name="txtTeacher" Grid.Row="2" Grid.Column="1" TextChanged="txtTeacher_TextChanged"/>
 
                 <StackPanel Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
                     <Label FontSize="16"  Name="lblBegin_time" Content="Begin time" Width="120"/>
@@ -72,27 +72,36 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button Grid.Row="0" Name="btn_AddQuestion" Content="Add Question" Click="btn_AddQuestion_Click"></Button>
-                    <ListBox Grid.Row="1" Name="QuestionsList" Grid.Column="1"/>
+                    <ListBox Grid.Row="1" Name="QuestionsLB" Grid.Column="1"/>
                 </Grid>
                 <Grid x:Name="SingleQuestion" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Name="header" Height ="auto"/>
                         <RowDefinition Name="QuestionText" Height ="auto"/>
                         <RowDefinition Name="images" Height="10*"/>
                         <RowDefinition Name="AnswersList" Height="79*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="1" Name="question_desc" Content="Question area" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="textBlock" TextWrapping="Wrap" Text="write your question here"/>
-                <DockPanel HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="1">
-                    <Button Name="btnLoadPhoto" Width="auto" Height="30" Content="upload image"></Button>
-                    <Button Name="btnUpload" Content="upload" Width="80" DockPanel.Dock="Right"/>
-                    <TextBox Name="Path" HorizontalAlignment="Stretch"/>
-                </DockPanel>
-                <ListBox Name="AnswersListBox" Grid.Column="1" Grid.Row="3" VerticalAlignment="Stretch"/>
-                    
+                    <Label Grid.Row="0" Name="question_desc" Content="Question area" HorizontalAlignment="Center" Margin="0,0,0,16" Grid.RowSpan="2"/>
+                    <TextBox Grid.Row="1" x:Name="textQuestion" TextWrapping="Wrap" Text="write your question here" Margin="0,0,0,30" Grid.RowSpan="2" TextChanged="textQuestion_TextChanged"/>
+                    <DockPanel Grid.Row="2" Margin="0,0,0,237" Grid.RowSpan="2">
+                        <Button Name="btnLoadPhoto" Width="auto" Height="30" Content="upload image"></Button>
+                        <Button Name="btnUpload" Content="upload" Width="80" DockPanel.Dock="Right"/>
+                        <TextBox Name="Path" HorizontalAlignment="Stretch"/>
+                    </DockPanel>
+                    <Grid Name="Answers" Grid.Row="3" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="AddAnswer" Height="auto"/>
+                            <RowDefinition x:Name="blAnswers" Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Name="AddAnswer_btn" Content="Add answer" Click="AddAnswer_btn_Click"/>
+                        <ListBox Name="AnswersListBox" Grid.Row="1" SelectionChanged="AnswersListBox_SelectionChanged"/>
+                        </Grid>
                 </Grid>
-                    
-                
+
+
 
             </Grid>
         </Grid>
