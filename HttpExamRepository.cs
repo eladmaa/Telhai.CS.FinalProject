@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Telhai.CS.FinalProject;
-
+using System.Windows.Controls;
 
 namespace Telhai.CS.APIServer.Models
 {
@@ -87,6 +87,41 @@ namespace Telhai.CS.APIServer.Models
         }
 
         internal Task AddQuestionAsync(Question q)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task UpdateQuestionAnswer()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task UpdateQuestionAnswer(string ans)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task updateExamTeacherName(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task updateExamId(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task updateQuestionText(object )
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task updateExamName(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task updateExamQuestionCorrect(Exam ex, Question q, ComboBox correct_answer)
         {
             throw new NotImplementedException();
         }

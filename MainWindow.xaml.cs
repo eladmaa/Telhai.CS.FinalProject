@@ -35,7 +35,7 @@ namespace Telhai.CS.FinalProject
         {
             TeacherWindow Teacher= new TeacherWindow();
             Teacher.Show();
-            List<Exam> exams = Teacher.allExams;
+        //    List<Exam> exams = Teacher.allExams();
         }
     }
 }

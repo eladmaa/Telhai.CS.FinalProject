@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +35,7 @@ namespace Telhai.CS.FinalProject
             InitializeComponent();
             this.Loaded += Window_Loaded_1;
             examsList.ItemsSource = exams;
-            QuestionsList.ItemsSource = questionsList;
+            this.QuestionsLB.ItemsSource = questionsList;
             AnswersListBox.ItemsSource = answersList;
         }
      
@@ -66,11 +68,16 @@ namespace Telhai.CS.FinalProject
             
         }
 
-        private void textQuestion_TextChanged(object sender, TextChangedEventArgs e)
+        private async void textQuestion_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.examsList.SelectedItem is Exam ex)
             {
-                // Http put update question
+                if (this.QuestionsLB.SelectedItem is Question q)
+                {
+                    // Http put update question
+                    await HttpExamRepository.Instance.updateQuestionText(this.)
+                }
+                
             }
         }
 
@@ -80,12 +87,150 @@ namespace Telhai.CS.FinalProject
             {
                 q.AnswersCount++;
                 await HttpExamRepository.Instance.UpdateQuestionAnswer(); //http put update question
+                Correct_answer.Items.Add(q.AnswersCount);
+            }
+            
+                
+            
+        }
+
+        private async void AnswersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.AnswersListBox.SelectedItem is String ans)
+            {
+                await HttpExamRepository.Instance.UpdateQuestionAnswer(ans);
             }
         }
 
-        private void AnswersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void txtExame_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (this.examsList.SelectedItem is Exam ex)
+            {
+                // Http put update question
+                await HttpExamRepository.Instance.updateExamName(this.txtExame.Text);
+            }
+        }
 
+        private async void txtID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.examsList.SelectedItem is Exam ex)
+            {
+                // Http put update question
+                await HttpExamRepository.Instance.updateExamId(this.txtID.Text);
+            }
+        }
+
+        private async void txtTeacher_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.examsList.SelectedItem is Exam ex)
+            {
+                // Http put update question
+                await HttpExamRepository.Instance.updateExamTeacherName(this.txtTeacher.Text);
+            }
+        }
+
+        private void time_begining_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.examsList.SelectedItem is Exam ex)
+            {
+                // Http put update question
+                
+            }
+        }
+
+        private void time_duration_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.examsList.SelectedItem is Exam ex)
+            {
+                // Http put update question
+            }
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (this.examsList.SelectedItem is Exam ex)
+            {
+                // Http put update question
+            }
+        }
+
+        public /* List<Exam> */ void allExams()
+        {
+          //  throw new NotImplementedException();
+        }
+
+        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            string ext; //will be used to get file extension
+            repo.SaveStudents();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Title = "Select a picture";
+            openFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+           "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+           "Portable Network Graphic (*.png)|*.png";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                txtPicture.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                ext = System.IO.Path.GetExtension(openFileDialog.FileName);
+                File.Copy(openFileDialog.FileName, Directory.GetCurrentDirectory() + "\\Pictures\\" + this.txtId.Text + ext);
+
+                if (this.listBoxStudents.SelectedItem is Student s)
+                {
+                    s.picture = Directory.GetCurrentDirectory() + "\\Pictures\\" + this.txtId.Text + ext;
+                }
+            }
+            */
+        }
+        private void btnLoadPhoto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Title = "Select a picture";
+            openFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+           "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+           "Portable Network Graphic (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                this.QuestionImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
+        }
+
+        private void QuestionsLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(this.QuestionsLB.SelectedItem is Question q)
+            {
+                this.textQuestion.Text = q.content;
+                foreach (String ans in q.answers)
+                { this.answersList.Add(ans); }
+            }
+        }
+
+        private async void Correct_answer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(this.examsList.SelectedItem is Exam ex)
+            {
+                if(this.QuestionsLB.SelectedItem is Question q)
+                {
+                    await HttpExamRepository.Instance.updateExamQuestionCorrect(ex, q, this.Correct_answer);
+                }
+            }
+        }
+        private async void exame_Datepicker_ValueChanged(object sender, EventArgs e)
+        {
+            await HttpExamRepository.Instance.updateExamDate(this.exame_Datepicker);
+        }
+        private void examsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.examsList.SelectedItem is Exam ex)
+            {
+                this.txtExame.Text = ex.examName;
+                this.txtID.Text = ex.id;
+                this.txtTeacher.Text = ex.TeacherName;
+                this.exame_Datepicker = ex.date;
+            }
         }
     }
 }

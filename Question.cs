@@ -12,7 +12,7 @@ namespace Telhai.CS.FinalProject
         public int AnswersCount { get; set; }
         public string content { get; set; }
         public int correct { get; set; }
-        List<string> answers;
+        public List<string> answers { get; set; }
         public Question(int qid)
         {
             this.Qid = qid;

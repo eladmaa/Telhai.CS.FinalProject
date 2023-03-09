@@ -17,7 +17,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Name="btn_AddExam" Content="New Exam" Click="btn_AddExam_Click"></Button>
-            <ListBox Grid.Row="1" Name="examsList" Grid.Column="1"/>
+            <ListBox Grid.Row="1" Name="examsList" Grid.Column="1" SelectionChanged="examsList_SelectionChanged"/>
         </Grid>
         <Grid Name="Exam" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -36,10 +36,10 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Label FontSize="16" Grid.Row="0" Grid.Column="0" Name="lbl_ExamName" Content="Exam Name"/>
-                <TextBox Background="AliceBlue" Name="txtExame" Grid.Row="0" Grid.Column="1"/>
+                <TextBox Background="AliceBlue" Name="txtExame" Grid.Row="0" Grid.Column="1" TextChanged="txtExame_TextChanged"/>
                 <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
                     <Label FontSize="16"  Name="lblId" Content="Exam ID" Width="120"/>
-                    <TextBox Background="AliceBlue" Name="txtID"  Width="160"/>
+                    <TextBox Background="AliceBlue" Name="txtID"  Width="160" TextChanged="txtID_TextChanged"/>
 
                     <Label FontSize="16" Name="lblDate" Content="Exame Date"/>
                     <DatePicker Background="AliceBlue" Name="exame_Datepicker"   Width="224"/>
@@ -50,12 +50,12 @@
 
                 <StackPanel Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
                     <Label FontSize="16"  Name="lblBegin_time" Content="Begin time" Width="120"/>
-                    <TextBox Background="AliceBlue" Name="time_begining" Width="160"/>
+                    <TextBox Background="AliceBlue" Name="time_begining" Width="160" TextChanged="time_begining_TextChanged"/>
 
                     <Label FontSize="16" Name="Duration" Content="duration"/>
-                    <ComboBox Background="AliceBlue" Name="time_duration"   Width="auto"/>
+                    <ComboBox Background="AliceBlue" Name="time_duration"   Width="auto" SelectionChanged="time_duration_SelectionChanged"/>
                     <Label FontSize="16" Name="lbl_random" Content="random apearance?"/>
-                    <CheckBox x:Name="checkBox" Content="CheckBox"/>
+                    <CheckBox x:Name="checkBox" Content="CheckBox" Checked="checkBox_Checked"/>
 
                 </StackPanel>
 
@@ -72,7 +72,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button Grid.Row="0" Name="btn_AddQuestion" Content="Add Question" Click="btn_AddQuestion_Click"></Button>
-                    <ListBox Grid.Row="1" Name="QuestionsLB" Grid.Column="1"/>
+                    <ListBox Grid.Row="1" Name="QuestionsLB" Grid.Column="1" SelectionChanged="QuestionsLB_SelectionChanged"/>
                 </Grid>
                 <Grid x:Name="SingleQuestion" Grid.Column="1">
                     <Grid.ColumnDefinitions>
@@ -87,18 +87,32 @@
                     <Label Grid.Row="0" Name="question_desc" Content="Question area" HorizontalAlignment="Center" Margin="0,0,0,16" Grid.RowSpan="2"/>
                     <TextBox Grid.Row="1" x:Name="textQuestion" TextWrapping="Wrap" Text="write your question here" Margin="0,0,0,30" Grid.RowSpan="2" TextChanged="textQuestion_TextChanged"/>
                     <DockPanel Grid.Row="2" Margin="0,0,0,237" Grid.RowSpan="2">
-                        <Button Name="btnLoadPhoto" Width="auto" Height="30" Content="upload image"></Button>
-                        <Button Name="btnUpload" Content="upload" Width="80" DockPanel.Dock="Right"/>
-                        <TextBox Name="Path" HorizontalAlignment="Stretch"/>
+                        <Button Name="btnLoadPhoto" Width="78" Content="choose image" Click="btnLoadPhoto_Click"/>
+                        <Button Name="btnUpload" Content="upload" Width="80" DockPanel.Dock="Right" Click="btnUpload_Click"/>
+                        <TextBox Name="Path" HorizontalAlignment="Stretch" />
                     </DockPanel>
-                    <Grid Name="Answers" Grid.Row="3" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition x:Name="AddAnswer" Height="auto"/>
-                            <RowDefinition x:Name="blAnswers" Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Button Name="AddAnswer_btn" Content="Add answer" Click="AddAnswer_btn_Click"/>
-                        <ListBox Name="AnswersListBox" Grid.Row="1" SelectionChanged="AnswersListBox_SelectionChanged"/>
+                    <Grid Name="AnswersColumn" Grid.Row="3" >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Name="PhotoColumn" Width="43*"/>
+                            <ColumnDefinition Width="92*"/>
+                            <ColumnDefinition Width="90*" Name="Answers"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Name="QuestionImage" Grid.Column="2" />
+                        <Grid Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="AddAnswer" Height="auto"/>
+                                <RowDefinition x:Name="blAnswers" Height="*"/>
+                            </Grid.RowDefinitions>
+                            <DockPanel>
+                                <Button Name="AddAnswer_btn" Content="Add answer" Click="AddAnswer_btn_Click" Grid.Column="0"/>
+                                <TextBox Text="choose correct answer"/>
+                                <ComboBox Name="Correct_answer" SelectionChanged="Correct_answer_SelectionChanged"/>
+                            </DockPanel>
+                            <ListBox Name="AnswersListBox" Grid.Row="1" SelectionChanged="AnswersListBox_SelectionChanged" Grid.Column="0"/>
                         </Grid>
+                    </Grid>
                 </Grid>
 
 
